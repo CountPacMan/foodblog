@@ -1130,6 +1130,15 @@ border-left: 1px solid; border-right: 1px solid; height: 40px; margin-left: -36p
   font-size: 16px;
 }
 
+.miniblocktitle {
+  font-size: 16px;
+  color: black !important;
+}
+
+#colophon {
+  display: none;
+}
+
 
 @media screen and (max-width: 768px) {
   html{

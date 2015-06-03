@@ -16,6 +16,7 @@ regions[preface_middle] = Preface Middle
 regions[preface_last]   = Preface Last
 regions[content_top]    = Content Top
 regions[content]        = Content
+
 regions[help]           = Help
 regions[footer]         = Footer
 regions[footer_first]   = First Bottom
@@ -47,4 +48,3 @@ version = "7.x-1.3"
 core = "7.x"
 project = "nexus"
 datestamp = "1378634197"
-
