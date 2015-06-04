@@ -1,0 +1,4 @@
+name = Get Time Module
+description = A link that allows the user to get the current time.
+core = 7.x
+scripts[] = gettime.js

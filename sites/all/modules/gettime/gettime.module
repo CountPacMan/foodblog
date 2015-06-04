@@ -1,0 +1,50 @@
+<?php
+
+function gettime_menu() {
+    $items = array();
+    $items['gettime'] = array(
+        'title' => 'Get Time',
+        'type' => MENU_NORMAL_ITEM,
+        'page callback' => 'gettime_page',
+        'access arguments' => array('access content'),
+    );
+
+    $items['gettime/%'] = array(
+        'title' => 'Get Time callback',
+        'type' => MENU_CALLBACK,
+        'page callback' => 'gettime_callback',
+        'page arguments' => array(1),
+        'access arguments' => array('access content'),
+    );
+
+    return $items;
+}
+
+function gettime_page() {
+    return array(
+        '#type' => 'link',
+        '#title' => t('Get Current Time'),
+        '#href' => 'gettime/nojs',
+        '#prefix' => '<div id="ajax-link">',
+        '#suffix' => '</div><div id="ajax-display"></div>',
+        '#ajax' => array(
+            'effect' => 'fade',
+        ),
+    );
+}
+
+function gettime_callback($ajax) {
+    $time = t('The current time is: !time', array('!time' => date('H:i')));
+
+    if ($ajax == 'ajax') {
+        $commands = array();
+
+        $commands[] = ajax_command_replace('#ajax-display', "<div id='ajax-display'>" . $time . "</div>");
+        $commands[] = ajax_command_changed('#ajax-display');
+        $commands[] = ajax_command_invoke(NULL, "ajax_link");
+
+        ajax_deliver(array('#type' => 'ajax', '#commands' => $commands));
+    } else {
+        return array('#markup' => $time,);
+    }
+}
